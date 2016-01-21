@@ -1,15 +1,22 @@
-#include <iostream>
-
-
+#include "glew.h"
+#include "glm/vec3.hpp"
 #include "View.h"
+#include "Mesh.h"
 
-
+static GLuint VBO;
 
 View::View(GLFWwindow* window, Model* model):
 	window(window),
 	model(model)
 {
+	glm::vec3 Vertices[3];
+	Vertices[0] = glm::vec3(-0.06f, -0.04f, 0.0f);
+	Vertices[1] = glm::vec3(0.06f, -0.04f, 0.0f);
+	Vertices[2] = glm::vec3(0.0f, 0.06f, 0.0f);
 
+	glGenBuffers(1, &VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
 }
 
 View::~View()
@@ -17,7 +24,7 @@ View::~View()
 	
 }
 
-void View::show(int state)
+void View::show()
 {
 	float ratio;
 	int width, height;
@@ -28,18 +35,14 @@ void View::show(int state)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	glTranslatef(model->getx(), model->gety(), 0.f);
-	glRotatef((float)glfwGetTime() * 500.f, 0.f, 0.f, 1.f);
-	glBegin(GL_TRIANGLES);
-	glColor3f(1.f, 0.f, 0.f);
-	glVertex3f(-0.6f, -0.4f, 0.f);
-	glColor3f(0.f, 1.f, 0.f);
-	glVertex3f(0.6f, -0.4f, 0.f);
-	glColor3f(0.f, 0.f, 1.f);
-	glVertex3f(0.f, 0.6f, 0.f);
-	glEnd();
+	
+	static Mesh m(VBO);
+	m.draw(0.2, 0.1);
+	m.draw(0.4, 0.1);
+	m.draw(0.6, 0.1);
+	m.draw(0.8, 0.1);
+	m.draw(model->getx(), model->gety());
+
 	glfwSwapBuffers(window);
 	glfwPollEvents();
 }

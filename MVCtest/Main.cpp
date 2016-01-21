@@ -1,5 +1,6 @@
 #include <iostream>
-#include <GLFW/glfw3.h>
+#include "glew.h"
+#include "GLFW/glfw3.h"
 
 #include "View.h"
 #include "Model.h"
@@ -9,7 +10,7 @@ static Input* pi = NULL;
 
 static void error_callback(int error, const char* description)
 {
-	std::cerr << description;
+	std::cerr << "GLFW Error: " << description;
 }
 
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -38,6 +39,12 @@ int main(int argc, char** argv)
 	glfwMakeContextCurrent(window);
 	glfwSwapInterval(1);
 
+	GLenum res = glewInit();
+	if (res != GLEW_OK) {
+		std::cerr << "GLEW Error: " << glewGetErrorString(res);
+		return 1;
+	}
+
 	Model m;
 	View v(window, &m);
 	Input i(&m);
@@ -49,7 +56,7 @@ int main(int argc, char** argv)
 
 	while (!glfwWindowShouldClose(window))
 	{
-		v.show(0);
+		v.show();
 	}
 
 	// cleanup
