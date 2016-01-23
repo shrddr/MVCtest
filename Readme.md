@@ -10,14 +10,16 @@ glew.lib is not version-dependent
 
 * download glfw3 source code
 * `cd glfw-3.1.2`
+* `sudo apt-get install cmake xorg-dev libgl1-mesa-dev`
 * `cmake .`
 * `make`
-* `cp src/libglfw3.a usr/local/lib`
-* `cp src/glfw3.pc usr/lib/pkgconfig`
-* `cd ../MVCtest`
-* `make`
+* `sudo make install`
 
-* download glew source code (don't dit clone, use tarball form sourceforge)
-* go to config/Makefile.linux and change to ARCH64=false at line 7
+* download glew source code (don't git clone, use tarball from sourceforge)
+* go to glew/config/Makefile.linux and change to ARCH64=false at line 7
 * `make`
 * `sudo make GLEW_DEST=/usr/local install`
+
+and finally
+* `cd ../MVCtest`
+* `make`
