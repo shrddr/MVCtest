@@ -10,7 +10,7 @@ glew.lib is not version-dependent
 
 #### glew
 * `sudo apt-get install libglew-dev`
-* 
+
 #### glfw3
 * `sudo apt-get install cmake xorg-dev libgl1-mesa-dev`
 * `git clone https://github.com/glfw/glfw.git`
