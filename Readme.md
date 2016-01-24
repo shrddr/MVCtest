@@ -6,21 +6,19 @@ build as is, use x86 platform
 download glfw3.lib for your specific version
 glew.lib is not version-dependent
 
-### Ubuntu 14.04:
+### Ubuntu 15.10:
 
+#### glew
+* `sudo apt-get install libglew-dev`
+* 
 #### glfw3
-* get source code: http://www.glfw.org
-* `cd glfw-3.1.2`
 * `sudo apt-get install cmake xorg-dev libgl1-mesa-dev`
+* `git clone https://github.com/glfw/glfw.git`
+* `cd glfw`
 * `cmake .`
 * `make`
 * `sudo make install`
-
-#### glew
-* get source code: http://glew.sourceforge.net (don't git clone, some files are missing there)
-* go to glew/config/Makefile.linux and change to ARCH64=false at line 7
-* `make`
-* `sudo make GLEW_DEST=/usr/local install`
+* `cd .. && rm -rf glfw`
 
 #### and finally
 * `cd MVCtest`
