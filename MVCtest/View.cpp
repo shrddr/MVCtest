@@ -39,10 +39,10 @@ void View::show()
 	glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
 	
 	static Mesh m(VBO);
-	m.draw(0.2f, 0.1f);
-	m.draw(0.4f, 0.1f);
-	m.draw(0.6f, 0.1f);
-	m.draw(0.8f, 0.1f);
+	m.draw(0.2f, 0.0f);
+	m.draw(-0.2f, 0.0f);
+	m.draw(0.0f, 0.2f);
+	m.draw(0.0f, -0.2f);
 	m.draw(model->getx(), model->gety());
 
 	glfwSwapBuffers(window);
