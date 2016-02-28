@@ -1,9 +1,9 @@
 ### MSVS2015 Community:
-build as is, use x86 platform
-(glfw3.lib and glew.lib included)
+build as is (glfw and glew binaries included)
 
 ### previous MSVS versions:
 download glfw3.lib for your specific version
+
 glew.lib is not version-dependent
 
 ### Ubuntu 15.10:
@@ -24,7 +24,7 @@ glew.lib is not version-dependent
 * `cd MVCtest`
 * `make`
 
-### Mac OS 10.8.4:
+### Mac OS 10.8:
 
 #### glew
 * `git clone https://github.com/nigels-com/glew.git`
