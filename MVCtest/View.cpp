@@ -1,3 +1,5 @@
+#define GLEW_STATIC
+
 #include "glew.h"
 #include "glm/vec3.hpp"
 #include "View.h"
@@ -37,10 +39,10 @@ void View::show()
 	glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
 	
 	static Mesh m(VBO);
-	m.draw(0.2, 0.1);
-	m.draw(0.4, 0.1);
-	m.draw(0.6, 0.1);
-	m.draw(0.8, 0.1);
+	m.draw(0.2f, 0.1f);
+	m.draw(0.4f, 0.1f);
+	m.draw(0.6f, 0.1f);
+	m.draw(0.8f, 0.1f);
 	m.draw(model->getx(), model->gety());
 
 	glfwSwapBuffers(window);

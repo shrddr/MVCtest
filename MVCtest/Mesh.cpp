@@ -1,8 +1,8 @@
+#define GLEW_STATIC
+
 #include "glew.h"
 #include "GLFW/glfw3.h"
 #include "Mesh.h"
-
-
 
 Mesh::Mesh(GLuint& VBO):VBO(VBO)
 {
